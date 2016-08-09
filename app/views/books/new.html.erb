@@ -1,0 +1,14 @@
+  <h1>Books#new</h1>
+  <p>Find me in app/views/books/new.html.erb</p>
+
+  <%= form_for @book do |t| %>
+    <p>Title: <%= t.text_field :title %></p></br>
+
+    <p>Author: <%= t.text_field :author %></p></br>
+
+    <p>Number Of Pages: <%= t.text_field :title %></p></br>
+
+    <p>Pushlish Date: <%= t.date_field :publish_date %></p>
+
+    <p>Subject: <%= t.collection_select :subject_id, @subjects, :id, :title%></p>
+  <% end %>

@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808085951) do
+ActiveRecord::Schema.define(version: 20160809083607) do
+
+  create_table "books", force: :cascade do |t|
+    t.string   "title",               limit: 32,  null: false
+    t.string   "author",              limit: 255, null: false
+    t.string   "subject_id",          limit: 255
+    t.integer  "the_number_of_pages", limit: 4
+    t.date     "publish_date"
+    t.date     "rating_score"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -26,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160808085951) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.string   "role",                   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

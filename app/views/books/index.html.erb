@@ -1,0 +1,26 @@
+<h1>Books#index</h1>
+
+  <% if @books.blank? %>
+    <p>There are not any books currently in the system.</p>
+  <% else %>
+    <table border="1">
+    <% @books.each do |t| %>
+      <%= t.title %>
+    <% end %>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publish Date</th>
+        <th>The Number Of Pages</th>
+        <th>Rating Score</th>
+      </tr>
+      <tr>
+        <td><%= t.tile%></td>
+        <td><%= t.author%></td>
+        <td><%= t.Publish Date%></td>
+        <td><%= t.the_number_of_pages%></td>
+        <td><%= t.rating_score%></td>
+      </tr>
+    </table>
+  <% end %>
+  <%= link_to 'Create new Book', new_book_path %>
