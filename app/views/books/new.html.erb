@@ -1,0 +1,34 @@
+ <h1>New Book</h1>
+ <p>Find me in app/views/books/new.html.erb</p>
+
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+
+ <table >
+  <%= form_for @book do |t|%>
+  <tr>
+    <td>Title: </td>
+    <td><%= t.text_field :title %></td>
+  </tr>
+  <tr>
+    <td>Author: </td>
+    <td><%= t.text_field :author %></td>
+  </tr>
+  <tr>
+    <td>The number of pages: </td>
+    <td><%= t.text_field :the_number_of_pages %></td>
+  </tr>
+  <tr>
+    <td>Pushlish date: </td>
+    <td><%= t.date_field :publish_date %></td>
+  </tr>
+  <tr>
+    <td>Subject: </td>
+    <td><%= t.collection_select :subject_id, Subject.all, :id, :title %></td>
+  </tr>
+  <tr>
+    <td><%= t.submit "Submit" %></td>
+  </tr>
+  <%end%>
+</table>

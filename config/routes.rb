@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  root "home#index"
+  root to: "home#index"
 
   get "home/index"
   get "home/about"
   get "home/contact"
-  
-  devise_for :users
+
+  resources :books
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
 end
+
