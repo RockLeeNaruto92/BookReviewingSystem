@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get "home/contact"
 
   resources :books
-  devise_for :users
-
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
 end
 

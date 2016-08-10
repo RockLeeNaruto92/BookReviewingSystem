@@ -14,10 +14,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new book_params
     if @book.save
-      redirect_to :action => "index"
+      redirect_to :index
     else
       @subjects = Subject.all
-      render :action => "new"
+      render :new
     end
   end
 
