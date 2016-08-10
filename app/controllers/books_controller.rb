@@ -12,7 +12,13 @@ class BooksController < ApplicationController
   end
 
   def create
-
+    @book = Book.new book_params
+    if @book.save
+      redirect_to :action => "index"
+    else
+      @subjects = Subject.all
+      render :action => "new"
+    end
   end
 
   def edit
@@ -26,6 +32,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:books).premit(:title, :author, :publish_date, :number_of_pages, :rating_score)
+    params.require(:book).permit(:title, :author, :id, :the_number_of_pages,:publish_date, :rating_score)
   end
 end
